@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temp</title>
+</head>
+<body>
+    <div>
+        <button onclick="getApi()">API 테스트</button>
+    </div>
+</body>
+<script>
+    const getApi = async () => {
+        const requestData = { name : '홍길동', number : 100 };
+        const responseData = await fetch('/temp/getData',{
+            method:'post',
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify(requestData)
+        })
+            .then(response => response.json())
+            .catch(error => console.error(error));
+        console.log(responseData);
+    }
+</script>
+</html>
